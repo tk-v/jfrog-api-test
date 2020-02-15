@@ -9,9 +9,13 @@ import org.jfrog.artifactory.client.model.RepoPath;
 
 public class App {
     public static void main(String[] args) {
+        if( args.length < 2 ) {
+            System.out.println("Login/password required");
+            return;
+        }
         String url = "http://jfrog.local/artifactory";
-        String user = "";
-        String password = "";
+        String user = args[0];
+        String password = args[1];
         
         Artifactory artifactory = ArtifactoryClientBuilder.create()
                                     .setUrl(url)
