@@ -7,5 +7,3 @@ ENV JAVA_HOME=/home/exec/jdk8
 RUN sed "/securerandom.source=/{s/file:\/dev\/random/file:\/dev\/urandom/}" /home/exec/jdk8/jre/lib/security/java.security -i
 ADD jar/jfrog-api-test.jar /home/exec/jfrog-api-test.jar
 
-CMD /bin/bash -c cd /home/exec; java -jar /home/exec/jfrog-api-test.jar $USERNAME $PASSWORD
-
