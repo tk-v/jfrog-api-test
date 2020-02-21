@@ -40,11 +40,14 @@ public class App {
                 JSONObject obj = new JSONObject(response.getRawBody()); 
                 int count = obj.getInt("downloadCount");
                 if( count > firstCount ) {
+                    secondCount = firstCount;
+                    secondUri = obj.getString("uri");
+
                     firstCount = count;
                     firstUri = obj.getString("uri");
                 }
-                else if( count > secondCount ) {
-                    secondCount = count;
+                else if( count != firstCount && count > secondCount ) {
+                    secondCount = firstCount;
                     secondUri = obj.getString("uri");
                 }
             }
